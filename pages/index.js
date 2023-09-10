@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Link from "next/link";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 
@@ -12,23 +11,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <nav className={`${styles.mainNav}`}>
-        <ul>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/about">About</Link>
-          </li>
-          <li>
-            <Link href="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
-        </ul>
-      </nav>
 
       <div className={styles.title}>
         <h1>Hunting Coder</h1>
@@ -48,7 +30,7 @@ export default function Home() {
       </div>
 
       <div className={styles.blogs}>
-        <h2>Popular Blogs:</h2>
+        <h2>Latest Blogs:</h2>
         <div className={styles.blogItems}>
           <h3>How to learn Javascript in 2022?</h3>
           <p>{`JavaScript is a versatile and widely used programming language primarily known for its role in web development.`}</p>
