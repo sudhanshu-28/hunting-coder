@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   font-weight: 600;
-  margin-top: 3.25rem;
+  margin-top: 1.25rem;
 }
 
 .mainNav li {
@@ -11,7 +11,7 @@
 }
 
 .title {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
 }
@@ -22,7 +22,7 @@
 }
 
 .subtitle {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   font-size: 1.25rem;
@@ -41,4 +41,14 @@
 
 .blogItems p {
   margin-top: 0.75rem;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.myHomeImage {
+  border-radius: 0.625rem;
 }

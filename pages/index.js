@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 
 export default function Home() {
@@ -35,6 +36,15 @@ export default function Home() {
 
       <div className={styles.subtitle}>
         A blog for hunting coders by hunting coder
+      </div>
+
+      <div className={styles.imageContainer}>
+        <Image
+          src="/home-img.jpg"
+          width={600}
+          height={300}
+          className={styles.myHomeImage}
+        />
       </div>
 
       <div className={styles.blogs}>
