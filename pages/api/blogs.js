@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     allBlogs.push({
       title: myFile.title,
       content: myFile.content,
-      path: files[index].split(".json")[0],
+      slug: myFile.slug,
     });
   }
 
