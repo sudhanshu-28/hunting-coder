@@ -23,28 +23,10 @@ export default function Home() {
       <div className={styles.imageContainer}>
         <Image
           src="/home-img.jpg"
-          width={600}
-          height={300}
+          width={800}
+          height={400}
           className={styles.myHomeImage}
         />
-      </div>
-
-      <div className={styles.blogs}>
-        <h2>Latest Blogs:</h2>
-        <div className={styles.blogItems}>
-          <h3>How to learn Javascript in 2022?</h3>
-          <p>{`JavaScript is a versatile and widely used programming language primarily known for its role in web development.`}</p>
-        </div>
-
-        <div className={styles.blogItems}>
-          <h3>How to learn Javascript in 2022?</h3>
-          <p>{`JavaScript is a versatile and widely used programming language primarily known for its role in web development.`}</p>
-        </div>
-
-        <div className={styles.blogItems}>
-          <h3>How to learn Javascript in 2022?</h3>
-          <p>{`JavaScript is a versatile and widely used programming language primarily known for its role in web development.`}</p>
-        </div>
       </div>
     </>
   );

@@ -1,0 +1,13 @@
+.blogpost {
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-top: 4rem;
+}
+
+.blogpost h2 {
+  text-align: center;
+}
+
+.blogpost div {
+  margin: 2rem 0rem 2rem 0rem;
+}
