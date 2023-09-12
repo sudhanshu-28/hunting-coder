@@ -1,0 +1,22 @@
+.blogs {
+  margin-left: 30vw;
+  margin-right: 30vw;
+}
+
+.blogs h2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.blogItems {
+  margin-top: 2rem;
+}
+
+.blogItems p {
+  margin-top: 0.75rem;
+}
+
+.blogContainer {
+  margin-top: 4rem;
+}

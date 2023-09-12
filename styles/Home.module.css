@@ -7,6 +7,7 @@
 .title h1 {
   font-size: 2.5rem;
   font-weight: 800;
+  margin-top: 2rem;
 }
 
 .subtitle {
@@ -15,20 +16,6 @@
   justify-content: center;
   font-size: 1.25rem;
   font-weight: 400;
-}
-
-.blogs {
-  margin-top: 2rem;
-  margin-left: 25vw;
-  margin-right: 25vw;
-}
-
-.blogItems {
-  margin-top: 2rem;
-}
-
-.blogItems p {
-  margin-top: 0.75rem;
 }
 
 .imageContainer {
