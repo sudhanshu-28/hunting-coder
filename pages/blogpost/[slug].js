@@ -4,16 +4,17 @@ import styles from "@/styles/BlogPost.module.css";
 
 const Slug = () => {
   const router = useRouter();
-  const { slug } = router.query;
 
-  const [blog, setBlog] = useState([]);
+  const [blog, setBlog] = useState();
   const [isFetchingData, setFetchingData] = useState(false);
 
-  const fetchBlogPost = async (blogId) => {
+  const fetchBlogPost = async (routerObj) => {
+    const { slug } = routerObj.query;
+
     if (slug) {
       setFetchingData(true);
 
-      await fetch(`/api/getblog?slug=${blogId}`)
+      await fetch(`/api/getblog?slug=${slug}`)
         .then((data) => {
           return data.json();
         })
@@ -29,8 +30,10 @@ const Slug = () => {
   };
 
   useEffect(() => {
-    fetchBlogPost(slug);
-  }, [slug]);
+    if (!router.isReady) return;
+
+    fetchBlogPost(router);
+  }, [router.isReady]);
 
   return (
     <div className={styles.blogpost}>
@@ -38,9 +41,9 @@ const Slug = () => {
         <div className={styles.loader}>Fetching data ...</div>
       ) : (
         <>
-          <h2>{blog?.title}</h2>
+          <h2>{blog && blog?.title}</h2>
           <div />
-          <p>{blog?.content}</p>
+          <p>{blog && blog?.content}</p>
         </>
       )}
     </div>
