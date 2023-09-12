@@ -1,28 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/Blog.module.css";
 import Link from "next/link";
 
 const Blog = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  const fetchAllBlogs = async () => {
+    const response = await fetch("/api/blogs");
+
+    if (response.ok && response.status === 200) {
+      const res = await response.json();
+      if (res?.success) {
+        setBlogs(res?.data);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchAllBlogs();
+  }, []);
+
   return (
     <div className={styles.blogContainer}>
       <div className={styles.blogs}>
         <h2>Latest Blogs:</h2>
-        <div className={styles.blogItems}>
-          <Link href={`/blogpost/learn-javascript`}>
-            <h3>How to learn Javascript in 2022?</h3>
-          </Link>
-          <p>{`JavaScript is a versatile and widely used programming language primarily known for its role in web development.`}</p>
-        </div>
-
-        <div className={styles.blogItems}>
-          <h3>How to learn Javascript in 2022?</h3>
-          <p>{`JavaScript is a versatile and widely used programming language primarily known for its role in web development.`}</p>
-        </div>
-
-        <div className={styles.blogItems}>
-          <h3>How to learn Javascript in 2022?</h3>
-          <p>{`JavaScript is a versatile and widely used programming language primarily known for its role in web development.`}</p>
-        </div>
+        {blogs.map((blog) => {
+          return (
+            <div className={styles.blogItems}>
+              <Link href={`blogpost/${blog?.path}`}>
+                <h3>{blog?.title}</h3>
+              </Link>
+              <p>{blog?.content}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
