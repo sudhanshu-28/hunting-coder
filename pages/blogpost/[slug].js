@@ -1,53 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, { useState } from "react";
 import styles from "@/styles/BlogPost.module.css";
 
-const Slug = () => {
-  const router = useRouter();
-
-  const [blog, setBlog] = useState();
-  const [isFetchingData, setFetchingData] = useState(false);
-
-  const fetchBlogPost = async (routerObj) => {
-    const { slug } = routerObj.query;
-
-    if (slug) {
-      setFetchingData(true);
-
-      await fetch(`/api/getblog?slug=${slug}`)
-        .then((data) => {
-          return data.json();
-        })
-        .then((response) => {
-          if (response?.success) {
-            setBlog(response?.data);
-          }
-        })
-        .finally(() => {
-          setFetchingData(false);
-        });
-    }
-  };
-
-  useEffect(() => {
-    if (!router.isReady) return;
-
-    fetchBlogPost(router);
-  }, [router.isReady]);
+const Slug = (props) => {
+  const { blogObj = {} } = props;
+  const [blog, setBlog] = useState(blogObj);
 
   return (
     <div className={styles.blogpost}>
-      {isFetchingData ? (
-        <div className={styles.loader}>Fetching data ...</div>
-      ) : (
-        <>
-          <h2>{blog && blog?.title}</h2>
-          <div />
-          <p>{blog && blog?.content}</p>
-        </>
-      )}
+      <h2>{blog && blog?.title}</h2>
+      <div />
+      <p>{blog && blog?.content}</p>
     </div>
   );
 };
+
+export async function getServerSideProps(context) {
+  let blogObj;
+  const { slug } = context.query;
+
+  if (slug) {
+    const data = await fetch(`http://localhost:3000/api/getblog?slug=${slug}`);
+    const response = await data.json();
+
+    if (response?.success && response?.data) {
+      blogObj = response?.data;
+    }
+  }
+
+  return {
+    props: { blogObj },
+  };
+}
 
 export default Slug;
